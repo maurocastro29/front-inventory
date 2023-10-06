@@ -66,11 +66,6 @@ export class NewCategoryComponent implements OnInit {
       name: [data.name, Validators.required],
       description: [data.description, Validators.required]
     });
-
-  /*  let dataUpdate = {
-      name: this.categoryForm.get('name')?.value,
-      description: this.categoryForm.get('description')?.value
-    }*/
   }
 
 }

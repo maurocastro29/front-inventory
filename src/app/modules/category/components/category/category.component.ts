@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CategoryService } from 'src/app/modules/shared/services/category.service';
 import { NewCategoryComponent } from '../new-category/new-category.component';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { ConfirmComponent } from 'src/app/modules/shared/components/confirm/confirm.component';
 
 @Component({
   selector: 'app-category',
@@ -57,7 +58,7 @@ export class CategoryComponent implements OnInit{
         this.openSnackBar("Categoria agregada", "Exitosa");
         this.getCategories();
       }else if (result == 2){
-        this.openSnackBar("Se produjo un error al guardar categoria", "Error");
+        this.openSnackBar("Se produjo un error al guardar la categoria", "Error");
         this.getCategories();
       }
     });
@@ -80,7 +81,24 @@ export class CategoryComponent implements OnInit{
         this.openSnackBar("Categoria actualizada con exito", "Exitosa");
         this.getCategories();
       }else if (result == 2){
-        this.openSnackBar("Se produjo un error al actualizar categoria", "Error");
+        this.openSnackBar("Se produjo un error al actualizar la categoria", "Error");
+        this.getCategories();
+      }
+    });
+  }
+
+  deleteCategory(id: number){
+    const dialogRef = this.dialog.open(ConfirmComponent, { //
+      width: '350px',
+      data: {id: id}
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if(result == 1){
+        this.openSnackBar("Categoria eliminada con exito", "Exitosa");
+        this.getCategories();
+      }else if (result == 2){
+        this.openSnackBar("Se produjo un error al eliminar la categoria", "Error");
         this.getCategories();
       }
     });

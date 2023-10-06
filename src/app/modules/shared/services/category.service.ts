@@ -40,4 +40,14 @@ export class CategoryService {
     return this.http.put(endpoint, body);
   }
 
+  /**
+   * Se elimina una caegoria por su id
+   * @param id
+   * @returns
+   */
+  deleteCategoria(id:any){
+    const endpoint = `${base_url}/categories/${id}`;
+    return this.http.delete(endpoint);
+  }
+
 }
