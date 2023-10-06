@@ -1,0 +1,8 @@
+.category-contaier{
+  display: flex;
+  flex-direction: column;
+}
+
+.category-contaier > *{
+  width: 100%;
+}
