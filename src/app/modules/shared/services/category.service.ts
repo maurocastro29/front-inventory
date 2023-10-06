@@ -30,4 +30,14 @@ export class CategoryService {
     return this.http.post(endpoint, body);
   }
 
+  /**
+   * Update a category
+   * @param body
+   * @param id
+   */
+  updateCategories(body: any, id: any){
+    const endpoint = `${base_url}/categories/${id}`;
+    return this.http.put(endpoint, body);
+  }
+
 }
