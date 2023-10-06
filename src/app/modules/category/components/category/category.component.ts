@@ -29,7 +29,6 @@ export class CategoryComponent implements OnInit{
 
     this.categoryService.getCategories()
         .subscribe( (data:any) => {
-          console.log("Respuesta categories: " + data);
           this.proccessCategoryResponse(data);
         }, (error:any) => {
           console.log("Error: " + error);
@@ -102,6 +101,18 @@ export class CategoryComponent implements OnInit{
         this.getCategories();
       }
     });
+  }
+
+  buscar(value: string){
+    if(value.length === 0){
+      return this.getCategories();
+    }
+    if(value.length > 0){
+      this.categoryService.getCategoryById(value)
+            .subscribe((resp: any)=>{
+              this.proccessCategoryResponse(resp);
+            })
+    }
   }
 
 }
